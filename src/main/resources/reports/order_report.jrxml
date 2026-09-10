@@ -1,0 +1,118 @@
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" name="order_report"
+              pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+
+    <parameter name="FROM" class="java.lang.String"/>
+    <parameter name="TO" class="java.lang.String"/>
+
+    <field name="orderId" class="java.lang.String"/>
+    <field name="customerName" class="java.lang.String"/>
+    <field name="movieTitle" class="java.lang.String"/>
+    <field name="seatCount" class="java.lang.Integer"/>
+    <field name="subTotal" class="java.math.BigDecimal"/>
+    <field name="promoDiscount" class="java.math.BigDecimal"/>
+    <field name="orderTotal" class="java.math.BigDecimal"/>
+    <field name="status" class="java.lang.String"/>
+
+    <title>
+        <band height="40">
+            <staticText>
+                <reportElement x="0" y="0" width="802" height="30"/>
+                <textElement textAlignment="Center">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Order Report]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="0" y="30" width="802" height="15"/>
+                <textFieldExpression><![CDATA["Period: " + $P{FROM} + " to " + $P{TO}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="20">
+            <staticText>
+                <reportElement x="0" y="0" width="100" height="20"/>
+                <text>Order ID</text>
+            </staticText>
+            <staticText>
+                <reportElement x="105" y="0" width="140" height="20"/>
+                <text>Customer</text>
+            </staticText>
+            <staticText>
+                <reportElement x="250" y="0" width="180" height="20"/>
+                <text>Movie</text>
+            </staticText>
+            <staticText>
+                <reportElement x="435" y="0" width="50" height="20"/>
+                <text>Seats</text>
+            </staticText>
+            <staticText>
+                <reportElement x="490" y="0" width="80" height="20"/>
+                <text>Sub Total</text>
+            </staticText>
+            <staticText>
+                <reportElement x="575" y="0" width="80" height="20"/>
+                <text>Discount</text>
+            </staticText>
+            <staticText>
+                <reportElement x="660" y="0" width="90" height="20"/>
+                <text>Total</text>
+            </staticText>
+            <staticText>
+                <reportElement x="755" y="0" width="47" height="20"/>
+                <text>Status</text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="16">
+            <textField>
+                <reportElement x="0" y="0" width="100" height="16"/>
+                <textFieldExpression>$F{orderPublicId}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="105" y="0" width="140" height="16"/>
+                <textFieldExpression>$F{customerName}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="250" y="0" width="180" height="16"/>
+                <textFieldExpression>$F{movieTitle}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="435" y="0" width="50" height="16"/>
+                <textFieldExpression>$F{seatCount}</textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement x="490" y="0" width="80" height="16"/>
+                <textFieldExpression>$F{subTotal}</textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement x="575" y="0" width="80" height="16"/>
+                <textFieldExpression>$F{promoDiscount}</textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement x="660" y="0" width="90" height="16"/>
+                <textFieldExpression>$F{orderTotal}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="755" y="0" width="47" height="16"/>
+                <textFieldExpression>$F{status}</textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <summary>
+        <band height="25">
+            <textField>
+                <reportElement x="660" y="5" width="90" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression>$V{REPORT_COUNT} + " orders"</textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>
