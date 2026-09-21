@@ -9,6 +9,7 @@ import com.kst.movie_ticket_reservation.feat.director.dto.req.CreateDirectorDto;
 import com.kst.movie_ticket_reservation.feat.director.dto.req.UpdateDirectorDto;
 import com.kst.movie_ticket_reservation.feat.director.dto.res.DirectorOffsetPaginationResDto;
 import com.kst.movie_ticket_reservation.feat.director.dto.res.DirectorResDto;
+import com.kst.movie_ticket_reservation.util.annotations.MessageCode;
 import com.kst.movie_ticket_reservation.util.api_responses.OffsetPaginationResponse;
 import com.kst.movie_ticket_reservation.util.api_responses.SuccessApiResponse;
 import com.kst.movie_ticket_reservation.util.exceptions.ConflictException;
@@ -55,6 +56,8 @@ public class CastController
 
     @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN','ROLE_ADMIN')")
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @MessageCode("CREATE_CAST_SUCCESS")
     ResponseEntity<SuccessApiResponse<CastResDto>> create(@Valid @RequestBody CreateCastDto createCastDto) throws ConflictException
     {
         CastResDto castResDto = this.castService.create(createCastDto);

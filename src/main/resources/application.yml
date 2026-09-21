@@ -3,7 +3,7 @@ spring:
     name: movie-ticket-reservation
 
   datasource:
-    url:
+    url: ${DATASOURCE_URL}
 
   jpa:
     hibernate:
@@ -25,7 +25,7 @@ spring:
 
   data:
     redis:
-      url:
+      url: ${REDIS_URL}
 
   cache:
     type: redis
@@ -33,7 +33,8 @@ spring:
       time-to-live: 30m
 
   rabbitmq:
-    addresses:
+    addresses: ${RABBITMQ_ADDRESSES}
+
   jackson:
     mapper:
       allow-coercion-of-scalars: false
@@ -62,25 +63,25 @@ refresh:
 
 cloudflare:
   r2:
-    account_id:
-    access-key:
-    secret-key:
-    endpoint:
-    bucket-name:
-    custom-domain:
-    token:
+    account_id: ${CLOUDFLARE_ACCOUNT_ID}
+    access-key: ${CLOUDFLARE_ACCESS_KEY}
+    secret-key: ${CLOUDFLARE_SECRET_KEY}
+    endpoint: ${CLOUDFLARE_R2_ENDPOINT}
+    bucket-name: ${CLOUDFLARE_BUCKET_NAME}
+    custom-domain: ${CLOUDFLARE_CUSTOM_DOMAIN}
+    token: ${CLOUDFLARE_TOKEN}
 
 google:
   client:
-    id:
-    secret:
+    id: ${GOOGLE_CLIENT_ID}
+    secret: ${GOOGLE_CLIENT_SECRET}
 
 resend:
   api:
-    key:
+    key: ${RESEND_API_KEY}
 
 stripe:
   secret:
-    key:
+    key: ${STRIPE_SECRET_KEY}
   webhook:
-    secret:
+    secret: ${STRIPE_WEBHOOK_SECRET}

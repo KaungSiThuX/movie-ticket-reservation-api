@@ -32,7 +32,6 @@ import com.kst.movie_ticket_reservation.util.exceptions.CustomStripeException;
 import com.kst.movie_ticket_reservation.util.exceptions.NotFoundException;
 import com.kst.movie_ticket_reservation.util.exceptions.UnauthorizedException;
 import com.kst.movie_ticket_reservation.util.job_payloads.SeatLockPayload;
-import com.kst.movie_ticket_reservation.util.services.report.ReportService;
 import com.stripe.exception.StripeException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -66,7 +65,6 @@ public class OrderServiceImpl implements OrderService
     private final OrderMapper orderMapper;
     private final RedisService redisService;
     private final UserRepository userRepository;
-    private final ReportService reportService;
 
     @Override
     @Transactional
